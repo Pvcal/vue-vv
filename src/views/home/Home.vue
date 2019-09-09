@@ -1,10 +1,14 @@
 <template>
- <div class="home-nav" id="home">
-<navbar>
-  <div  slot="center">购物街</div>
-</navbar>
-<home-swiper :rs="rs"></home-swiper>
-<recommend-view :rs="rs"></recommend-view>
+  <div id="home">
+  <div class="home-nav" >
+    <navbar>
+     <div  slot="center">购物街</div>
+    </navbar>
+  </div>
+  <home-swiper :rs="rs"></home-swiper>
+  <recommend-view :rs="rs"></recommend-view>
+  <feature-view></feature-view>
+  <tab-control class="tabcontrolitem" :titles="['流行','爆款','推荐']"></tab-control>
  </div>
 </template>
 
@@ -13,7 +17,8 @@
 import Navbar from '../../components/common/navbar/Navbar'
 import HomeSwiper from "@/views/home/childComps/HomeSwiper"
 import RecommendView from "./childComps/RecommendView"
-
+import FeatureView from "./childComps/FeatureView"
+import TabControl from "../../components/content/tabControl/TabControl"
 
 import {getHomeMultidata} from "@/network/home"
 // import {Swiper ,SwiperItem}from "@/components/common/swiper"
@@ -22,7 +27,9 @@ export default {
   components:{
     Navbar,
     HomeSwiper,
-    RecommendView
+    RecommendView,
+    FeatureView,
+    TabControl
   },
   data() {
     return {
@@ -41,5 +48,16 @@ export default {
 <style>
 .home-nav{
   background-color:var(--color-tint);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 9;
+
 }
+#home{
+  padding-top: 44px;
+  padding-bottom: 80px;
+}
+
 </style>
